@@ -1,0 +1,8 @@
+{
+    "xml.fileAssociations": [
+        {
+            "pattern": "**/*.xml",
+            "systemId": "./.vscode/xfschema.xsd"
+        }
+    ]
+}

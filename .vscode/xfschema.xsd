@@ -1,0 +1,293 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="body">
+    <xs:complexType>
+      <xs:sequence minOccurs="1" maxOccurs="1">
+        <xs:element name="body1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="meta" type="metaType">
+                <xs:annotation>
+                  <xs:documentation>存储题目的所有属性信息，如：来源、语种，文本长度等</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="content" type="contentType">
+                <xs:annotation>
+                  <xs:documentation>存储题目的文本内容，包括大小题题干、解析、答案等</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="metaType">
+    <xs:sequence>
+      <xs:element name="version" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>版本名，不限于版本号，可用于记录该条所在的处理版本或批次</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="subject" type="subjectEnum">
+        <xs:annotation>
+          <xs:documentation>
+            门类：数据标注到英语四六级试卷或者考研英语试卷、雅思、托福等外语考试卷子的时候，subject标签请写成英语；考研政治试卷subject标签请写成政治；考研数学subject标签请写成数学；计算机的写为计算机即可。其他科目的试卷按照专业门类表，进行相应分类即可。
+            </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="data_type" type="dataTypeEnum">
+        <xs:annotation>
+          <xs:documentation>原始数据的具体来源，分为教材、教辅、试卷；后续可根据情况拓展，如增加真题、模拟等，区分题目质量</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="pub_year" type="yearType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>题目所属试卷的年份，若为教材等无明确年份的可不填；若pdf文件名中包含年份，一定要写</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="full_name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>书籍或试卷的全名</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="chapter" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>若为书籍，可写入章节名称</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="language" type="languageType">
+        <xs:annotation>
+          <xs:documentation>语料主要语种的标识，如zh、en等（繁简体区分按需）</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="source" type="xs:anyURI">
+        <xs:annotation>
+          <xs:documentation>应该存放该套试卷/教辅/教材的pdf网络源路径</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element name="quiz_type" type="quizTypeType">
+        <xs:annotation>
+          <xs:documentation>题型，目前分为6类：解答题、选择题、判断题、填空题、做图题、其它题。当一道题目包含多种题型的小题时，该字段写入：复合题</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="pub_time" type="dateTimeType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>发布时间戳，UTC时间，指数据最原始版本的时间，因为最原始版本后面还可能会有多轮处理</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="process_time" type="dateTimeType">
+        <xs:annotation>
+          <xs:documentation>流水线处理时间戳，UTC时间（键入now快速输入）</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="additional_info" type="additionalInfoType">
+        <xs:annotation>
+          <xs:documentation>留个活口，方便留备注、额外字段什么的</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element name="is_explaned" type="boolType">
+        <xs:annotation>
+          <xs:documentation>是否包含答案解析或解题思路分析，填True或False</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="is_answered" type="boolType">
+        <xs:annotation>
+          <xs:documentation>是否有答案，填True或False</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="contentType">
+    <xs:sequence>
+      <xs:element name="question" type="stringWithLatex">
+        <xs:annotation>
+          <xs:documentation>主题干文本内容，若为单题结构，则为问题本身。</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="img" type="imgType" minOccurs="0" maxOccurs="unbounded" />
+
+      <xs:choice>
+        <xs:sequence>
+          <xs:element name="exp" type="stringWithLatex" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>题目解析（若is_explaned为True）</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="img" type="imgType" minOccurs="0" maxOccurs="unbounded" />
+          <xs:element name="ans" type="stringWithLatex" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>题目答案，若答案中同时存在多个答案，用[space]隔开</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="img" type="imgType" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+
+        <xs:element name="quiz" type="quizType" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>小题题干，里面可增加参数type</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="quizType">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>题号，标明是在所在大题中的第几小题</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="content" type="stringWithLatex" />
+      <xs:element name="img" type="imgType" minOccurs="0" maxOccurs="unbounded" />
+
+      <xs:element name="exp" type="stringWithLatex" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>若为小题解析，根据小题id规则迁移id</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="img" type="imgType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="ans" type="stringWithLatex" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>若为小题答案，根据小题id规则迁移id。</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="img" type="imgType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+
+    <xs:attribute name="type" type="quizTypeType" use="optional">
+      <xs:annotation>
+        <xs:documentation>参数type，用于meta-quiz_type为复合题时，额外描述题型，题型与meta-quiz_type中五大题型一致</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:simpleType name="subjectEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="哲学" />
+      <xs:enumeration value="经济学" />
+      <xs:enumeration value="法学" />
+      <xs:enumeration value="教育学" />
+      <xs:enumeration value="文学" />
+      <xs:enumeration value="历史学" />
+      <xs:enumeration value="理学" />
+      <xs:enumeration value="工学" />
+      <xs:enumeration value="农业" />
+      <xs:enumeration value="医学" />
+      <xs:enumeration value="管理学" />
+      <xs:enumeration value="艺术类" />
+      <xs:enumeration value="农林牧渔" />
+      <xs:enumeration value="资源环境与安全" />
+      <xs:enumeration value="能源动力与材料" />
+      <xs:enumeration value="土木建筑" />
+      <xs:enumeration value="水利" />
+      <xs:enumeration value="装备制造" />
+      <xs:enumeration value="生物与化工" />
+      <xs:enumeration value="轻工纺织" />
+      <xs:enumeration value="食品药品与粮食" />
+      <xs:enumeration value="交通运输" />
+      <xs:enumeration value="电子与信息" />
+      <xs:enumeration value="医药卫生" />
+      <xs:enumeration value="财经商贸" />
+      <xs:enumeration value="旅游" />
+      <xs:enumeration value="文化艺术" />
+      <xs:enumeration value="新闻传播" />
+      <xs:enumeration value="教育与体育" />
+      <xs:enumeration value="公安与司法" />
+      <xs:enumeration value="公共管理与服务" />
+
+      <xs:enumeration value="英语" />
+      <xs:enumeration value="政治" />
+      <xs:enumeration value="数学" />
+      <xs:enumeration value="计算机" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="dataTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="教材" />
+      <xs:enumeration value="教辅" />
+      <xs:enumeration value="试卷" />
+
+      <!-- <xs:enumeration value="真题" /> -->
+      <!-- <xs:enumeration value="模拟" /> -->
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="yearType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\d{4}" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="languageType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="zh" />
+      <xs:enumeration value="en" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="quizTypeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="解答题" />
+      <xs:enumeration value="选择题" />
+      <xs:enumeration value="判断题" />
+      <xs:enumeration value="填空题" />
+      <xs:enumeration value="做图题" />
+      <xs:enumeration value="其它题" />
+      <xs:enumeration value="复合题" />
+
+      <xs:enumeration value="证明题" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="dateTimeType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="boolType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="True" />
+      <xs:enumeration value="False" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="additionalInfoType" mixed="true">
+    <xs:sequence>
+      <xs:any minOccurs="0" maxOccurs="unbounded" processContents="skip" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="imgType" mixed="true">
+    <xs:annotation>
+      <xs:documentation>
+        若题目的题干、解答中包含图标，则需要将每一个图标单独切图，并在该字段放入图片文件路径。多个图片从1开始自增，里面可增加参数src，用于与对应的题干、答案或解析标签进行映射</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="src" use="optional">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="question" />
+          <xs:enumeration value="quiz" />
+          <xs:enumeration value="ans" />
+          <xs:enumeration value="exp" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="stringWithLatex" mixed="true">
+    <xs:annotation>
+      <xs:documentation>文本内容，若文本中包含latex公式，需要将公式单独提取出来，放入latex标签中</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="latex" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
