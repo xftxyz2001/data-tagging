@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<body>
+  <body1>
+    <meta>
+      <version>1.0</version>
+      <subject>理学</subject>
+      <data_type>试卷</data_type>
+      <pub_year>2016</pub_year>
+      <full_name>08-09(1)高数A（一）、B（一）试卷</full_name>
+      <language>zh</language>
+      <source>https://sky-edugpt-label.oss-cn-beijing.aliyuncs.com/common/yt/%E6%95%99%E6%9D%90%E8%AF%95%E5%8D%B7%E5%BD%95%E5%85%A5/%E8%89%BA%E5%85%94%E4%BB%BB%E5%8A%A1%E5%8C%85/08-09(1)%E9%AB%98%E6%95%B0A%EF%BC%88%E4%B8%80%EF%BC%89%E3%80%81B%EF%BC%88%E4%B8%80%EF%BC%89%E8%AF%95%E5%8D%B7.pdf</source>
+      <quiz_type>选择题</quiz_type>
+      <pub_time>2023-09-27 08:11:51</pub_time>
+      <process_time>2023-09-27 08:12:23</process_time>
+      <is_explaned>False</is_explaned>
+      <is_answered>True</is_answered>
+    </meta>
+    <content>
+      <question>4.设a>0,b>0,则方程<latex>x^{3} +ax+b=0</latex>（）.
+      A.只有一个正实根  B.只有一个负实根  
+      C.有三个互异实根  D.只有两个互异实根
+      </question>
+      <img src="question">2.4.png</img>
+      <ans>B</ans>
+    </content>
+  </body1>
+</body>

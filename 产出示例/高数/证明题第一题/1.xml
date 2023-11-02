@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<body>
+  <body1>
+    <meta>
+      <version>1.0</version>
+      <subject>理学</subject>
+      <data_type>试卷</data_type>
+      <pub_year>2016</pub_year>
+      <full_name>08-09(1)高数A（一）、B（一）试卷</full_name>
+      <language>zh</language>
+      <source>https://sky-edugpt-label.oss-cn-beijing.aliyuncs.com/common/yt/%E6%95%99%E6%9D%90%E8%AF%95%E5%8D%B7%E5%BD%95%E5%85%A5/%E8%89%BA%E5%85%94%E4%BB%BB%E5%8A%A1%E5%8C%85/08-09(1)%E9%AB%98%E6%95%B0A%EF%BC%88%E4%B8%80%EF%BC%89%E3%80%81B%EF%BC%88%E4%B8%80%EF%BC%89%E8%AF%95%E5%8D%B7.pdf</source>
+      <quiz_type>证明题</quiz_type>
+      <pub_time>2023-09-27 08:11:51</pub_time>
+      <process_time>2023-09-27 08:12:23</process_time>
+      <is_explaned>False</is_explaned>
+      <is_answered>True</is_answered>
+    </meta>
+    <content>
+      <question>1.设f(x)在[0,1]上连续且单调减少，证明：<latex>\int_{0}^{a}f(x)\mathrm{d}x\geq a\int_{0}^{1}f(x)\mathrm{d}x,\quad\forall a\in[0,1]</latex>.</question>
+      <img src="question">5.1.png</img>
+      <ans>证法：问题等价于证明<latex>\forall a\in[0,1]</latex>，成立<latex>(1-a)\int_{0}^af(x)\mathrm{d}x\geq a\int_{a}^1f(x)\mathrm{d}x</latex>.
+      对不等式的两边应用积分第一中值定理，则存在<latex>\forall x_{1}\in[0,a],x_{2}\in[a,1]</latex>，使得<latex>(1-a)\int_{0}^af(x)\mathrm{d}x=a(1-a)f\left(x_{1}\right),a\int_{a}^1f(x)\mathrm{d}=a(1-a)f\left(x_{2}\right)</latex>.
+      由于<latex>f\left(x_{1}\right)\geq f\left(x_{2}\right)</latex>,故<latex>(1-a)\int_{0}^af(x)\mathrm{d}x\geq a\int_{a}^1f(x)\mathrm{d}x</latex>.</ans>
+    </content>
+  </body1>
+</body>

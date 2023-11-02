@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<body>
+    <body1>
+       <meta>
+          <version>1.0</version>
+          <subject>文学</subject>
+          <data_type>教辅</data_type>
+          <pub_year>2016</pub_year>
+          <full_name>现代汉语千题解</full_name>
+          <language>zh</language>
+          <source>https://sky-edugpt-label.oss-cn-beijing.aliyuncs.com/common/yt/%E6%95%99%E6%9D%90%E8%AF%95%E5%8D%B7%E5%BD%95%E5%85%A5/%E8%89%BA%E5%85%94%E4%BB%BB%E5%8A%A1%E5%8C%85/%E7%8E%B0%E4%BB%A3%E6%B1%89%E8%AF%AD%E5%8D%83%E9%A2%98%E8%A7%A3.pdf</source>
+          <quiz_type>选择题</quiz_type>
+          <pub_time>2023-09-26 15:05:51</pub_time>
+          <process_time>2023-09-26 16:06:23</process_time>
+          <is_explaned>False</is_explaned>
+          <is_answered>True</is_answered>
+        </meta>
+        <content>
+              <question>593.挑出表示态度或感情的插语的句子。
+              ①王书记看样子五十多岁了。（）
+              ②效果呢？据说是会有的。（）
+              ③总之，提高学生读写能力很重要。（）
+              ④谁知这孩子三岁时害了一场重病，成了聋哑。（）
+              ⑤你看，那一片柿树，红得多么好看。（）
+               </question>
+               <img src="question">593.png</img>
+               <ans>④（√）</ans>
+        </content>
+    </body1>
+</body>

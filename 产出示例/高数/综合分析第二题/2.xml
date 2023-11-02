@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<body>
+  <body1>
+    <meta>
+      <version>1.0</version>
+      <subject>理学</subject>
+      <data_type>试卷</data_type>
+      <pub_year>2016</pub_year>
+      <full_name>08-09(1)高数A（一）、B（一）试卷</full_name>
+      <language>zh</language>
+      <source>https://sky-edugpt-label.oss-cn-beijing.aliyuncs.com/common/yt/%E6%95%99%E6%9D%90%E8%AF%95%E5%8D%B7%E5%BD%95%E5%85%A5/%E8%89%BA%E5%85%94%E4%BB%BB%E5%8A%A1%E5%8C%85/08-09(1)%E9%AB%98%E6%95%B0A%EF%BC%88%E4%B8%80%EF%BC%89%E3%80%81B%EF%BC%88%E4%B8%80%EF%BC%89%E8%AF%95%E5%8D%B7.pdf</source>
+      <quiz_type>解答题</quiz_type>
+      <pub_time>2023-09-27 08:11:51</pub_time>
+      <process_time>2023-09-27 08:12:23</process_time>
+      <is_explaned>False</is_explaned>
+      <is_answered>True</is_answered>
+    </meta>
+    <content>
+     <question>2.设曲线<latex>y=x^3+3ax^2+3bx+c</latex>在x=-1处取得极大值，点(0,3)是拐点，求a,b,c.</question>
+      <img src="question">4.2.png</img>
+      <ans>解：函数<latex>y=x^3+3ax^2+3bx+c,x=-1</latex>在定义域内可二阶可导.
+      由于曲线在x=-1处取到极值，由Fermat定理，<latex>y^{'}(-1)=0</latex>.即<latex>3-6a+3b=0</latex>
+      由于(0,3)是曲线的拐点，则<latex>y^{''}(0)=0,y(0)=3</latex>,
+      即a=0,c=0,带入得到b=-1.</ans>
+    </content>
+  </body1>
+</body>
