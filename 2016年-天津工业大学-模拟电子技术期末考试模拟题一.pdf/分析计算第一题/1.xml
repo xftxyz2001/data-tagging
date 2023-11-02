@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<body>
+  <body1>
+    <meta>
+      <version>1.0</version>
+      <subject>电子与信息</subject>
+      <data_type>试卷</data_type>
+      <pub_year>2016</pub_year>
+      <full_name>2016年-天津工业大学-模拟电子技术期末考试模拟题一</full_name>
+      <language>zh</language>
+      <source></source>
+
+      <quiz_type>解答题</quiz_type>
+      <pub_time>2023-10-28 22:29:49</pub_time>
+      <process_time>2023-10-28 23:19:42</process_time>
+      <is_explaned>False</is_explaned>
+      <is_answered>True</is_answered>
+    </meta>
+    <content>
+      <question>1、已知电力如下图示：为理想二极管，试分析：</question>
+      <img src="question">1.png</img>
+      <img src="question">2.png</img>
+      <quiz>
+        <id>1</id>
+        <content>①二极管导通还是截止？</content>
+        <img src="quiz">1.1.png</img>
+        <ans>1)二极管V截止</ans>
+      </quiz>
+      <quiz>
+        <id>2</id>
+        <content>②<latex>U_{AO}</latex>=?(4分)</content>
+        <img src="quiz">1.2.png</img>
+        <ans>2)<latex>U_{AO}</latex>=-4V</ans>
+      </quiz>
+
+    </content>
+  </body1>
+</body>
